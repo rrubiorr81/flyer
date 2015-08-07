@@ -21,3 +21,16 @@ $factory->define(App\Flyer::class, function (Faker\Generator $faker) {
         'description' => $faker->paragraph(),
     ];
 });
+
+$factory->define(App\Student::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->name
+    ];
+});
+
+
+$factory->define(App\Course::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->domainWord
+    ];
+});
