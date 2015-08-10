@@ -25,8 +25,13 @@
 
     <hr/>
 
-    <form id="addPhotosForm" class="dropzone" action="/{!!$flyer->zip!!}/{!!$flyer->street!!}/photos" method="POST">
-    {{csrf_field()}}
+    <form
+        id="addPhotosForm"
+        class="dropzone"
+        action="{{ route('store_photo_path', [$flyer->zip, $flyer->street]) }}"
+        method="POST">
+
+        {{csrf_field()}}
     </form>
 @stop
 

@@ -6,4 +6,5 @@ Homestead.json
 /.idea
 /public/css
 /public/js
-/public/flyer/photo/*
+/public/flyer/photo/
+.DS_Store
