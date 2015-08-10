@@ -5,6 +5,7 @@
 <title>FlyerProject</title>
 <link href="/css/app.css" rel="stylesheet">
 <link href="/css/libs.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/dropzone.css" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -32,6 +33,7 @@
     </div>
 
     <script src="/js/libs.js"></script>
+    @yield('scripts.footer')
     @include('flash')
 </body>
 </html>

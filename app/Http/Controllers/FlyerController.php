@@ -91,4 +91,20 @@ class FlyerController extends Controller
     {
         //
     }
+
+    public function addPhotos($zip, $street, Request $request)
+    {
+        $file = $request->file('photo');
+
+        $newName = time() . $file->getClientOriginalName();
+
+        $file->move('flyer/photo', $newName);
+
+        $flyer = Flyer::locatedAt($zip, $street)->first();
+
+        $flyer->photos()->create(['path' => '/flyer/photo/'.$newName]);
+
+        dd('done');
+
+    }
 }
