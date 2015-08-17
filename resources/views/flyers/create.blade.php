@@ -4,9 +4,7 @@
     <h1>Creating your initial flyer</h1>
 
     <hr/>
-
-    <div class="row">
-        <form method="POST" action="/flyers" enctype="multipart/form-data" class="col-lg-6">
+       <form method="POST" action="/flyers" enctype="multipart/form-data">
             @include('flyers.form.create')
 
             @if(count($errors) > 0)
@@ -20,5 +18,4 @@
             @endif
 
         </form>
-    </div>
 @stop
