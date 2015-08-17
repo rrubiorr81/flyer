@@ -24,6 +24,12 @@ class AuthController extends Controller
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
+     * Where the user is sent once is registered
+     * @var string
+     */
+    protected $redirectPath = "/flyers/create";
+
+    /**
      * Create a new authentication controller instance.
      *
      * @return void
