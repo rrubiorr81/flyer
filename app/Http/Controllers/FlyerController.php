@@ -16,6 +16,8 @@ class FlyerController extends Controller
     function __construct()
     {
         $this->middleware('auth', ['except' => ['show']]);
+
+        parent::__construct();
     }
 
     /**
