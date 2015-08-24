@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Http\Requests\FlyerRequest;
 use App\Http\Controllers\Controller;
 use App\Flyer;
+use Illuminate\Support\Facades\Response;
 use \Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class FlyerController extends Controller
@@ -113,6 +114,18 @@ class FlyerController extends Controller
         $this->validate($request, [
            'photo' => "required|mimes:jpg,jpeg,png,bmp"
         ]);
+
+        $flyer = Flyer::LocatedAt($zip, $street);
+
+        if($flyer->user_id !== \Auth::id()){
+            if($request->ajax()){
+                return response(['message' => 'no way.'], 403);
+            }
+
+            flash('no way');
+
+            return redirect('/');
+        }
 
         $photo = $this->makePhoto($request->file('photo'));
 
