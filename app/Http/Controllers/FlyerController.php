@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\FlyerRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Response;
+use App\Http\Requests\ChaneFlyerRequest;
 use App\Http\Controllers\Traits\AuthorizesUsers;
 use \Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -110,18 +111,10 @@ class FlyerController extends Controller
      * Apply a photo to the referenced flyer...
      * @param $zip
      * @param $street
-     * @param Request $request
+     * @param ChaneFlyerRequest $request
      */
-    public function addPhotos($zip, $street, Request $request)
+    public function addPhotos($zip, $street, ChaneFlyerRequest $request)
     {
-        $this->validate($request, [
-           'photo' => "required|mimes:jpg,jpeg,png,bmp"
-        ]);
-
-        if(! $this->userCreatedFlyer($request)) {
-            return $this->unAuthorized($request);
-        }
-
         $photo = $this->makePhoto($request->file('photo'));
 
         Flyer::locatedAt($zip, $street)->addPhoto($photo);
